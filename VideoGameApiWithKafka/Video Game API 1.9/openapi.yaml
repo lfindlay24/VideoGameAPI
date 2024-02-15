@@ -1,0 +1,713 @@
+openapi: 3.0.0
+info:
+  title: Video Game Exchange
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User'
+                type: array
+          description: A paged array of Users
+      summary: List All Users
+      tags:
+      - users
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    post:
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Create a User
+      tags:
+      - users
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+  /users/{userId}:
+    delete:
+      operationId: deleteUser
+      parameters:
+      - description: The id of the user to delete
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Delete one User
+      tags:
+      - users
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    get:
+      operationId: getOneUser
+      parameters:
+      - description: The id of the user to get
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: One User Object
+      summary: Get One User
+      tags:
+      - users
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    patch:
+      operationId: updateSomeUser
+      parameters:
+      - description: The id of the user to update
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Update Some User Attributes
+      tags:
+      - users
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    put:
+      operationId: updateUser
+      parameters:
+      - description: The id of the user to update
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Update all User Attributes
+      tags:
+      - users
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+  /users/{userId}/{gameId}:
+    post: 
+      parameters:
+      - description: The id of the user to add game to
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The id of the game to add to user
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      operationId: addGameUser
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Add a Game to a User
+      tags:
+      - users
+      - games
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    delete: 
+      parameters:
+      - description: The id of the user to delete game from
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The id of the game to delete from user
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      operationId: deleteGameUser
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Remove a Game from a User  
+      tags:
+      - users
+      - games
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+  /games:
+    get:
+      operationId: listGames
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Game'
+                type: array
+          description: A paged array of Games
+      summary: List All Games
+      tags:
+      - games
+      x-accepts: application/json
+      x-tags:
+      - tag: games
+    post:
+      operationId: createGame
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+        required: true
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Create a Game
+      tags:
+      - games
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: games
+  /games/{gameId}:
+    delete:
+      operationId: deleteGame
+      parameters:
+      - description: The id of the game to delete
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Delete one Game
+      tags:
+      - games
+      x-accepts: application/json
+      x-tags:
+      - tag: games
+    get:
+      operationId: getOneGame
+      parameters:
+      - description: The id of the game to get
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+          description: One User Object
+      summary: Get One Game
+      tags:
+      - games
+      x-accepts: application/json
+      x-tags:
+      - tag: games
+    patch:
+      operationId: updateSomeGame
+      parameters:
+      - description: The id of the game to update
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+        required: true
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Update Some Game Attributes
+      tags:
+      - games
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: games
+    put:
+      operationId: updateGame
+      parameters:
+      - description: The id of the game to update
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+        required: true
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Update all Game Attributes
+      tags:
+      - games
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: games
+  /offers:
+    get:
+      operationId: listOffers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Offer'
+                type: array
+          description: A paged array of Offers
+      summary: List All Offers
+      tags:
+      - offers
+      x-accepts: application/json
+      x-tags:
+      - tag: offers
+    post:
+      operationId: createOffer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offer'
+        required: true
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Create an Offer
+      tags:
+      - offers
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: offers
+  /offers/{offerId}:
+    delete:
+      operationId: deleteOffer
+      parameters:
+      - description: The id of the offer to delete
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Delete one Offer
+      tags:
+      - offers
+      x-accepts: application/json
+      x-tags:
+      - tag: offers
+    get:
+      operationId: getOneOffer
+      parameters:
+      - description: The id of the offer to get
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+          description: One Offer Object
+      summary: Get One Offer
+      tags:
+      - offers
+      x-accepts: application/json
+      x-tags:
+      - tag: offers
+    patch:
+      operationId: updateSomeOffer
+      parameters:
+      - description: The id of the offer to update
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offer'
+        required: true
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Update Some offer Attributes
+      tags:
+      - offers
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: offers
+    put:
+      operationId: updateOffer
+      parameters:
+      - description: The id of the offer to update
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offer'
+        required: true
+      responses:
+        "204":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Update all Offer Attributes
+      tags:
+      - offers
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: offers
+  /offers/{offerId}/{gameId}/{isSent}:
+    post: 
+      parameters:
+      - description: The id of the offer to add a Game to
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The id of the game to add to offer
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: boolean to determine if game is being sent or not
+        explode: false
+        in: path
+        name: isSent
+        required: true
+        schema:
+          type: boolean
+        style: simple
+      operationId: addGameOffer
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Add a game to a offer
+      tags:
+      - users
+      - games
+      - offers
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    delete: 
+      parameters:
+      - description: The id of the offer to delete a Game from
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The id of the game to delete from offer
+        explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: boolean to determine if game is being sent or not
+        explode: false
+        in: path
+        name: isSent
+        required: true
+        schema:
+          type: boolean
+        style: simple
+      operationId: deleteGameOffer
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+      summary: Remove a Game from a User  
+      tags:
+      - users
+      - games
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+components:
+  schemas:
+    User:
+      example:
+        zip: zip
+        address: address
+        city: city
+        name: name
+        games:
+        - null
+        - null
+        id: 0
+        state: state
+        email: email
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        games:
+          items:
+            type: string
+          type: array
+      required:
+      - address
+      - city
+      - email
+      - id
+      - name
+      - state
+      - zip
+      type: object
+    Offer:
+      example:
+        toUser:
+        - null
+        - null
+        sentGames:
+        - null
+        - null
+        fromUser:
+        - null
+        - null
+        receivedGames:
+        - null
+        - null
+        timeCreated: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        state: state
+      properties:
+        id:
+          format: int64
+          type: integer
+        fromUser:
+          type: string
+        sentGames:
+          items:
+            type: string
+          type: array
+        receivedGames:
+          items:
+            type: string
+          type: array
+        toUser:
+          type: string
+        timeCreated:
+          type: string
+        state:
+          type: string
+      required:
+      - fromUser
+      - id
+      - receivedGames
+      - sentGames
+      - state
+      - timeCreated
+      - toUser
+      type: object
+    Game:
+      example:
+        console: console
+        numOwners: 6
+        condition: condition
+        pubishYear: pubishYear
+        publisher: publisher
+        id: 0
+        title: title
+      properties:
+        id:
+          format: int64
+          type: integer
+        title:
+          type: string
+        publisher:
+          type: string
+        pubishYear:
+          type: string
+        condition:
+          type: string
+        console:
+          type: string
+        numOwners:
+          type: integer
+      required:
+      - condition
+      - console
+      - id
+      - publishYear
+      - publisher
+      - title
+      type: object
+    User_games_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Game'
+      x-one-of-name: UserGamesInner
+    Offer_fromUser_inner:
+      oneOf:
+      - $ref: '#/components/schemas/User'
+      x-one-of-name: OfferFromUserInner
