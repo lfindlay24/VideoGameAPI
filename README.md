@@ -5,12 +5,12 @@ localhost:8084 is the default way to access the api
 Common Usage
 
   GET
-    /users\n
-      Gets all users
-    /users/{userId}
-      Gets a user specified by the userId
-    /games
-      Gets all games
+    /users <br />
+      Gets all users <br />
+    /users/{userId} <br />
+      Gets a user specified by the userId <br />
+    /games <br />
+      Gets all games <br />
     /games/{gameId}
       Gets a game specified by the gameId
     /offers
