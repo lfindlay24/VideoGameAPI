@@ -17,6 +17,7 @@ Common Usage
       Gets all offers
     /offers/{offerId}
       Gets an offer specified by the offerId
+-------------------------------------------------------------
   POST
     /users
       Posts a user to the database
