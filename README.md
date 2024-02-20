@@ -7,16 +7,22 @@ Common Usage
   GET
     /users <br />
       Gets all users <br />
+      
     /users/{userId} <br />
       Gets a user specified by the userId <br />
+      
     /games <br />
       Gets all games <br />
+      
     /games/{gameId} <br />
       Gets a game specified by the gameId <br />
+      
     /offers <br />
       Gets all offers <br />
+      
     /offers/{offerId} <br />
       Gets an offer specified by the offerId <br />
+      
 -------------------------------------------------------------
   POST: <br />
     /users: <br />
