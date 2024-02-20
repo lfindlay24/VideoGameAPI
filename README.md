@@ -5,6 +5,7 @@ localhost:8084 is the default way to access the api
 Common Usage
 
   GET
+  
     /users <br />
       Gets all users <br />
       
@@ -25,6 +26,7 @@ Common Usage
       
 -------------------------------------------------------------
   POST: <br />
+  
     /users: <br />
       Posts a user to the database <br />
       Expected request body: <br />
@@ -41,8 +43,10 @@ Common Usage
             "string" <br />
           ] <br />
         } <br />
+        
     /users/{userId}/{gameId} <br />
       Posts a game to a user object given a userId and a gameId <br />
+      
     /games <br />
       Posts a game to the database <br />
       Expected request body: <br />
@@ -55,6 +59,7 @@ Common Usage
           "console": "string", <br />
           "numOwners": 0 <br />
         } <br />
+        
     /offers <br />
       Posts an offer to the database <br />
       Expected request body: <br />
@@ -71,8 +76,10 @@ Common Usage
           "timeCreated": "string", <br />
           "state": "string" <br />
         } <br />
+        
     /offers/{offerId}/{gameId}/{isSent} <br />
       Adds a game to an offer given an offerId, gameId, and a boolean for if it was sent or received <br />
+      
 --------------------------------------------------------------------------------------------------------------
   DELETE <br />
     /users/{userId} <br />
