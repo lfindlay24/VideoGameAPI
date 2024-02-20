@@ -82,14 +82,148 @@ Common Usage
       
 --------------------------------------------------------------------------------------------------------------
   DELETE 
+  
     /users/{userId} 
       Deletes a user given the userId 
+      
     /users/{userId}/{gameId} 
       Deletes a game from a user given the userId and gameId 
+      
     /games/{gameId} 
       Deletes a game given the gameId 
+      
     /offers/{offerId} 
       Deletes an offer given the offerId 
+      
     /offers/{offerId}/{gameId}/{isSent} 
       Deletes a game from an offer given the offerId. gameId, and if it was sent or received 
+---------------------------------------------------------------------------------------------------------------
+  PATCH
+
+    /users/{userId}
+      Updates some user attributes given a userId
+      Expected request body *Note Leave attributes Empty if you dont want to update*:
+        {
+          "id": 0,
+          "name": "string",
+          "email": "string",
+          "address": "string",
+          "city": "string",
+          "state": "string",
+          "zip": "string",
+          "password": "string",
+          "games": [
+            "string"
+          ]
+        }
+      /games/{gameId}
+        Updates some game attributes given a gameId
+        Expected request body *Note Leave attributes Empty if you dont want to update*:
+          {
+            "id": 0,
+            "title": "string",
+            "publisher": "string",
+            "pubishYear": "string",
+            "condition": "string",
+            "console": "string",
+            "numOwners": 0
+          }
+      /offers/{offerId}
+        Updates some offer attributes given a offerId
+        Expected request body *Note Leave attributes Empty if you dont want to update*:
+          {
+            "id": 0,
+            "fromUser": "string",
+            "sentGames": [
+              "string"
+            ],
+            "receivedGames": [
+              "string"
+            ],
+            "toUser": "string",
+            "timeCreated": "string",
+            "state": "string"
+          }
+----------------------------------------------------------------------------------------------------------
+  PUT
+
+    /users/{usersId}
+      Updates all user attributes except for Id
+      Expected request body:
+        {
+          "id": 0,
+          "name": "string",
+          "email": "string",
+          "address": "string",
+          "city": "string",
+          "state": "string",
+          "zip": "string",
+          "password": "string",
+          "games": [
+            "string"
+          ]
+        }
+    /games/{gameId}
+      Updates all game attributes except for Id
+      Expected request body:
+        {
+          "id": 0,
+          "title": "string",
+          "publisher": "string",
+          "pubishYear": "string",
+          "condition": "string",
+          "console": "string",
+          "numOwners": 0
+        }
+    /offers/{offerId}
+      Updates all offer attributes except for the Id
+      Expected request body:
+        {
+          "id": 0,
+          "fromUser": "string",
+          "sentGames": [
+            "string"
+          ],
+          "receivedGames": [
+            "string"
+          ],
+          "toUser": "string",
+          "timeCreated": "string",
+          "state": "string"
+        }
+---------------------------------------------------------------------------------------
+
+Models
+
+    User{
+        id*	integer($int64)
+        name*	string
+        email*	string
+        address*	string
+        city*	string
+        state*	string
+        zip*	string
+        password*	string
+        games	[string]
+        }
+        
+    Game{
+        id*	integer($int64)
+        title*	string
+        publisher*	string
+        pubishYear	string
+        condition*	string
+        console*	string
+        numOwners	integer($int32)
+        }
+
+    Offer{
+          id*	integer($int64)
+          fromUser*	string
+          sentGames*	[string]
+          receivedGames*	[string]
+          toUser*	string
+          timeCreated*	string
+          state*	string
+          }
     
