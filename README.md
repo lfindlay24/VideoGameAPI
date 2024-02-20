@@ -18,8 +18,8 @@ Common Usage
     /offers/{offerId}
       Gets an offer specified by the offerId
 -------------------------------------------------------------
-  POST
-    /users
+  POST:
+    /users:
       Posts a user to the database
       Expected request body:
         {
