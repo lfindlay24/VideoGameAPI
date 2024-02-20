@@ -67,4 +67,16 @@ Common Usage
         } <br />
     /offers/{offerId}/{gameId}/{isSent} <br />
       Adds a game to an offer given an offerId, gameId, and a boolean for if it was sent or received <br />
+--------------------------------------------------------------------------------------------------------------
+  DELETE <br />
+    /users/{userId} <br />
+      Deletes a user given the userId <br />
+    /users/{userId}/{gameId} <br />
+      Deletes a game from a user given the userId and gameId <br />
+    /games/{gameId} <br />
+      Deletes a game given the gameId <br />
+    /offers/{offerId} <br />
+      Deletes an offer given the offerId <br />
+    /offers/{offerId}/{gameId}/{isSent} <br />
+      Deletes a game from an offer given the offerId. gameId, and if it was sent or received <br />
     
