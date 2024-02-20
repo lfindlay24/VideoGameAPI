@@ -5,7 +5,7 @@ localhost:8084 is the default way to access the api
 Common Usage
 
   GET
-    ###/users
+    /users\n
       Gets all users
     /users/{userId}
       Gets a user specified by the userId
